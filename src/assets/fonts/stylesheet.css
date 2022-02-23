@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Mukta Mahee';
+    src: url('MuktaMahee-Medium.eot');
+    src: url('MuktaMahee-Medium.eot?#iefix') format('embedded-opentype'),
+        url('MuktaMahee-Medium.woff2') format('woff2'),
+        url('MuktaMahee-Medium.woff') format('woff'),
+        url('MuktaMahee-Medium.ttf') format('truetype'),
+        url('MuktaMahee-Medium.svg#MuktaMahee-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mukta Mahee';
+    src: url('MuktaMahee-Medium_1.eot');
+    src: url('MuktaMahee-Medium_1.eot?#iefix') format('embedded-opentype'),
+        url('MuktaMahee-Medium_1.woff2') format('woff2'),
+        url('MuktaMahee-Medium_1.woff') format('woff'),
+        url('MuktaMahee-Medium_1.ttf') format('truetype'),
+        url('MuktaMahee-Medium_1.svg#MuktaMahee-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
