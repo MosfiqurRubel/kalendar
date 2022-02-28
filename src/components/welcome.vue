@@ -1,12 +1,12 @@
 <template>
-    <div class="full">
+    <div class="full d-flex flex-wrap">
         <div class="colm-3" v-for="service in serviceList" :key="service.id">
             <div class="sta">
                 <img :src="service.img" />
                 <h2>{{ service.name }}</h2>
             </div>
         </div>
-        <div class="full-ser">
+        <div class="full-ser full-width">
             <h2>
                 <a href="javascript:void(0)">Expand for More Services </a>
             </h2>
@@ -60,4 +60,43 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.full-width {
+    width: 100%;
+}
+.full {
+    .colm-3 {
+        width: 33.33%;
+        float: none !important;
+    }
+    .sta {
+        img {
+            display: block;
+            margin: auto;
+        }
+
+        h2 {
+            transform: translate(0%, -55%);
+        }
+        @media (min-width: 1200px) and (max-width: 1365px) {
+            height: 235px;
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            height: 221px;
+        }
+        @media (max-width: 823px) {
+            height: 170px;
+        }
+        @media (max-width: 767px) {
+            height: 100% !important;
+        }
+    }
+    @media (max-width: 640px) {
+        flex-direction: column;
+        .colm-3 {
+            width: 100%;
+        }
+    }
+}
+</style>

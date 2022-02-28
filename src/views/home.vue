@@ -3,33 +3,46 @@
         <div
             id="undefined-sticky-wrapper"
             class="sticky-wrapper"
-            style="height: 77px"
             :class="{ 'is-sticky': screenSize == 320 }"
         >
-            <header
-                class="header-holder is-sticky"
-                style="position: fixed; top: 0;"
-            >
+            <header class="header-holder">
                 <div class="menu-wrapper center-relative relative">
                     <div class="header-logo">
-                        <a href="index.html">
+                        <router-link :to="'#home'">
+                            <img :src="logo" alt="Seppo" />
+                        </router-link>
+                        <!-- <a href="index.html">
                             <img v-bind:src="logo" alt="Seppo" />
-                        </a>
+                        </a> -->
                     </div>
-                    <div class="toggle-holder">
+                    <div
+                        class="toggle-holder"
+                        @click="showToggleMenu"
+                        :class="{ on: isOn }"
+                    >
                         <div id="toggle">
                             <div class="first-menu-line"></div>
                             <div class="second-menu-line"></div>
                             <div class="third-menu-line"></div>
                         </div>
                     </div>
-                    <div class="menu-holder">
+                    <div class="menu-holder" :class="{ show: isOn }">
                         <nav id="header-main-menu">
                             <ul class="main-menu sm sm-clean btn-bav">
                                 <li
                                     v-for="mainNav in mainNavs"
                                     :key="mainNav.id"
+                                    @click="hideToggleMenu"
                                 >
+                                    <!-- <router-link
+                                        :to="
+                                            mainNav.href.replace(
+                                                '#' + mainNav.href,
+                                                ''
+                                            )
+                                        "
+                                        >{{ mainNav.name }}</router-link
+                                    > -->
                                     <router-link :to="'#' + mainNav.href">{{
                                         mainNav.name
                                     }}</router-link>
@@ -37,7 +50,6 @@
                                     <!-- <a :href="'#' + mainNav.href">{{
                                         mainNav.name
                                     }}</a> -->
-                                    <!-- @click="scrollMeTo(mainNav.href)" -->
                                 </li>
                             </ul>
                         </nav>
@@ -61,11 +73,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Services Section -->
+
             <div id="services" class="section">
                 <div class="section-wrapper block content-1170 center-relative">
                     <div class="content-wrapper">
-                        <ul>
+                        <ul class="welcome-to">
                             <li class="big-text">welcome to</li>
                             <li class="rigt-logo">
                                 <span>
@@ -102,952 +114,36 @@
             <AboutUs></AboutUs>
             <Goals></Goals>
 
-            <div id="serv" class="section">
-                <div class="abt-img">
-                    <img src="../assets/images/sers.png" />
-                    <h3 class="entry-title">
-                        SERVICES
-                    </h3>
-                    <div class="for">
-                        <form action="/action_page.php">
-                            <input
-                                type="text"
-                                id="fname"
-                                placeholder="Find a service"
-                            />
-                            <input type="submit" value="Submit" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="green">
-                <div
-                    class="section-wrapper block content-1170 center-relative tops"
-                >
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/box-bg.jpg" />
-                                <div class="ser-desc">
-                                    <span>PHYSICAL EDUCATION</span>
-                                    <h2>Boxing Classes</h2>
-                                    <ul>
-                                        <li><span>Feat. </span>Agung</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/cok.jpg" />
-                                <div class="ser-desc">
-                                    <span>CULINARY ARTS</span>
-                                    <h2>Cooking Classes</h2>
-                                    <ul>
-                                        <li><span>Feat.</span>Maya</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/robo.jpg" />
-                                <div class="ser-desc">
-                                    <span>IT</span>
-                                    <h2>Robotics</h2>
-                                    <ul>
-                                        <li>
-                                            <span>Feat.</span>Robotics Denpasar
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <Services></Services>
 
-                    <div class="clearboth"></div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/yg.jpg" />
-                                <div class="ser-desc">
-                                    <span>PHYSICAL EDUCATION</span>
-                                    <h2>Yoga Classes</h2>
-                                    <ul>
-                                        <li><span>Feat.</span>Duyen</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/dg.jpg" />
-                                <div class="ser-desc">
-                                    <span>CREATIVE ARTS</span>
-                                    <h2>DJ 101</h2>
-                                    <ul>
-                                        <li><span>Feat.</span>DJ Vebo</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/cont.jpg" />
-                                <div class="ser-desc">
-                                    <span>CREATIVE ARTS</span>
-                                    <h2>Content Creating</h2>
-                                    <ul>
-                                        <li><span>Feat.</span>Fernie</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearboth"></div>
+            <ServicesList></ServicesList>
 
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/box-bg.jpg" />
-                                <div class="ser-desc">
-                                    <span>PHYSICAL EDUCATION</span>
-                                    <h2>Boxing Classes</h2>
-                                    <ul>
-                                        <li><span>Feat. </span>Agung</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/cok.jpg" />
-                                <div class="ser-desc">
-                                    <span>CULINARY ARTS</span>
-                                    <h2>Cooking Classes</h2>
-                                    <ul>
-                                        <li><span>Feat.</span>Maya</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-smm-3">
-                        <div class="serv-container">
-                            <div class="white-g">
-                                <img src="../assets/images/robo.jpg" />
-                                <div class="ser-desc">
-                                    <span>IT</span>
-                                    <h2>Robotics</h2>
-                                    <ul>
-                                        <li>
-                                            <span>Feat.</span>Robotics Denpasar
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <Carrer></Carrer>
 
-                    <a class="load" href="javascript:void(0)">Load more </a>
-                </div>
+            <Login></Login>
 
-                <footer class="footer white-fotL ser-f">
-                    <div class="footer-content center-relative">
-                        <div class="copyright-holder">© 2021 LearningBALI</div>
-                    </div>
-                </footer>
-            </div>
-            <div id="carrer" class="section">
-                <div class="abt-img">
-                    <img src="../assets/images/car.jpg" />
-                    <h3 class="entry-title">
-                        CAREERS
-                    </h3>
-                </div>
-                <div
-                    class="section-wrapper block content-1170 center-relative white-bg"
-                >
-                    <div class="for job-form">
-                        <form action="/action_page.php">
-                            <input
-                                type="text"
-                                id="fname"
-                                placeholder="Please input a job title..."
-                            />
-                            <input type="submit" value="Submit" />
-                        </form>
-                    </div>
-                </div>
-                <div
-                    class="section-wrapper block content-1170 center-relative second-row full-foot"
-                >
-                    <div class="container">
-                        <div id="accordion" class="accordion">
-                            <div class="card mb-0">
-                                <div
-                                    class="card-header collapsed"
-                                    data-toggle="collapse"
-                                    href="#collapseOne"
-                                >
-                                    <a class="card-title">
-                                        <div class="cr-bg">
-                                            <span>
-                                                <img
-                                                    src="../assets/images/one-accrod.jpg"
-                                                />
-                                            </span>
-                                            <div class="pos-set">
-                                                <h5>Educator Position</h5>
-                                                <p>Available Now</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div
-                                    id="collapseOne"
-                                    class="card-body collapse"
-                                    data-parent="#accordion"
-                                >
-                                    <div class="white-bgg">
-                                        <h6>Job Description</h6>
-                                        <p>Responsibilities</p>
-                                        <ul>
-                                            <li>
-                                                1. Educating different
-                                                experiences in order for the
-                                                students to be able to apply
-                                                different life skills.
-                                            </li>
-                                            <li class="bg">
-                                                2. Must be able to showcase a
-                                                good example to students
-                                                Requirements <br />
-                                                1. Tech Savvy <br />
-                                                2. Proficient in English <br />
-                                                3. A Good Grasp of Skill
-                                                <br />
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="container upd">
-                                        <div class="upload-form">
-                                            <h1>
-                                                THINK YOU’VE GOT WHAT IT TAKES?
-                                            </h1>
-                                            <div class="blackstr">
-                                                <form>
-                                                    <div
-                                                        class="con-form last-form"
-                                                    >
-                                                        <div class="cols-12">
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="First Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="Last Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group ty"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="phone"
-                                                                        name="phone"
-                                                                        type="text"
-                                                                        placeholder="Email address"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="upload-blo"
-                                                            >
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    CV</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    Resume</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <input
-                                                            type="submit"
-                                                            value="Submit"
-                                                        />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="card-header collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseTwo"
-                                >
-                                    <a class="card-title">
-                                        <div class="cr-bg">
-                                            <span>
-                                                <img
-                                                    src="../assets/images/third-accrd-bg.jpg"
-                                                />
-                                            </span>
-                                            <div class="pos-set">
-                                                <h5>SMM Position</h5>
-                                                <p>Available Now</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div
-                                    id="collapseTwo"
-                                    class="card-body collapse"
-                                    data-parent="#accordion"
-                                >
-                                    <div class="white-bgg">
-                                        <h6>Job Description</h6>
-                                        <p>Responsibilities</p>
-                                        <ul>
-                                            <li>
-                                                1. Educating different
-                                                experiences in order for the
-                                                students to be able to apply
-                                                different life skills.
-                                            </li>
-                                            <li class="bg">
-                                                2. Must be able to showcase a
-                                                good example to students
-                                                Requirements <br />
-                                                1. Tech Savvy <br />
-                                                2. Proficient in English <br />
-                                                3. A Good Grasp of Skill
-                                                <br />
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="container upd">
-                                        <div class="upload-form">
-                                            <h1>
-                                                THINK YOU’VE GOT WHAT IT TAKES?
-                                            </h1>
-                                            <div class="blackstr">
-                                                <form>
-                                                    <div
-                                                        class="con-form last-form"
-                                                    >
-                                                        <div class="cols-12">
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="First Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="Last Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group ty"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="phone"
-                                                                        name="phone"
-                                                                        type="text"
-                                                                        placeholder="Email address"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="upload-blo"
-                                                            >
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    CV</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    Resume</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <input
-                                                            type="submit"
-                                                            value="Submit"
-                                                        />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="card-header collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapseThree"
-                                >
-                                    <a class="card-title">
-                                        <div class="cr-bg">
-                                            <span>
-                                                <img
-                                                    src="../assets/images/two-accord.jpg"
-                                                />
-                                            </span>
-                                            <div class="pos-set">
-                                                <h5>HR Position</h5>
-                                                <p>Available Now</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div
-                                    id="collapseThree"
-                                    class="collapse"
-                                    data-parent="#accordion"
-                                >
-                                    <div class="white-bgg">
-                                        <h6>Job Description</h6>
-                                        <p>Responsibilities</p>
-                                        <ul>
-                                            <li>
-                                                1. Educating different
-                                                experiences in order for the
-                                                students to be able to apply
-                                                different life skills.
-                                            </li>
-                                            <li class="bg">
-                                                2. Must be able to showcase a
-                                                good example to students
-                                                Requirements <br />
-                                                1. Tech Savvy <br />
-                                                2. Proficient in English <br />
-                                                3. A Good Grasp of Skill
-                                                <br />
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="container upd">
-                                        <div class="upload-form">
-                                            <h1>
-                                                THINK YOU’VE GOT WHAT IT TAKES?
-                                            </h1>
-                                            <div class="blackstr">
-                                                <form>
-                                                    <div
-                                                        class="con-form last-form"
-                                                    >
-                                                        <div class="cols-12">
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="First Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="Last Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group ty"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="phone"
-                                                                        name="phone"
-                                                                        type="text"
-                                                                        placeholder="Email address"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="upload-blo"
-                                                            >
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    CV</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    Resume</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <input
-                                                            type="submit"
-                                                            value="Submit"
-                                                        />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="card-header collapsed"
-                                    data-toggle="collapse"
-                                    data-parent="#accordion"
-                                    href="#collapsefour"
-                                >
-                                    <a class="card-title">
-                                        <div class="cr-bg">
-                                            <span>
-                                                <img
-                                                    src="../assets/images/for-accrd.jpg"
-                                                />
-                                            </span>
-                                            <div class="pos-set">
-                                                <h5>CS Position</h5>
-                                                <p>Available Now</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div
-                                    id="collapsefour"
-                                    class="collapse"
-                                    data-parent="#accordion"
-                                >
-                                    <div class="white-bgg">
-                                        <h6>Job Description</h6>
-                                        <p>Responsibilities</p>
-                                        <ul>
-                                            <li>
-                                                1. Educating different
-                                                experiences in order for the
-                                                students to be able to apply
-                                                different life skills.
-                                            </li>
-                                            <li class="bg">
-                                                2. Must be able to showcase a
-                                                good example to students
-                                                Requirements <br />
-                                                1. Tech Savvy <br />
-                                                2. Proficient in English <br />
-                                                3. A Good Grasp of Skill
-                                                <br />
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="container upd">
-                                        <div class="upload-form">
-                                            <h1>
-                                                THINK YOU’VE GOT WHAT IT TAKES?
-                                            </h1>
-                                            <div class="blackstr">
-                                                <form>
-                                                    <div
-                                                        class="con-form last-form"
-                                                    >
-                                                        <div class="cols-12">
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="First Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="name"
-                                                                        name="name"
-                                                                        type="text"
-                                                                        placeholder="Last Name"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="form-group ty"
-                                                            >
-                                                                <div
-                                                                    class="input-group"
-                                                                >
-                                                                    <input
-                                                                        class="form-control"
-                                                                        id="phone"
-                                                                        name="phone"
-                                                                        type="text"
-                                                                        placeholder="Email address"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="upload-blo"
-                                                            >
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    CV</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                                <label
-                                                                    for="myfile"
-                                                                    >Upload Your
-                                                                    Resume</label
-                                                                >
-                                                                <input
-                                                                    type="file"
-                                                                    id="myfile"
-                                                                    name="myfile"
-                                                                />
-                                                                <br />
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <input
-                                                            type="submit"
-                                                            value="Submit"
-                                                        />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <footer class="footer white-fotL ser-f kl">
-                    <div class="footer-content center-relative">
-                        <div class="copyright-holder">© 2021 LearningBALI</div>
-                    </div>
-                </footer>
-            </div>
-            <div id="login" class="section">
-                <div class="section-wrapper block content-1170 center-relative">
-                    <span class="hor"> green </span>
-                    <div class="login-ti">
-                        <h2>LOGIN WITH</h2>
-                        <div class="form-start">
-                            <ul>
-                                <li>
-                                    <img src="../assets/images/facebook.png" />
-                                </li>
-                                <li>
-                                    <img src="../assets/images/google.png" />
-                                </li>
-                            </ul>
-                            <form>
-                                <div class="con-form">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i
-                                                    class="fa fa-user-circle-o"
-                                                    aria-hidden="true"
-                                                ></i>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                id="name"
-                                                name="name"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ty">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i
-                                                    class="fa fa-envelope"
-                                                    aria-hidden="true"
-                                                ></i>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                id="email"
-                                                name="email"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ty">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i
-                                                    class="fa fa-search"
-                                                    aria-hidden="true"
-                                                ></i>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                id="phone"
-                                                name="phone"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="sign up" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <span class="ver"> greens</span>
-                </div>
-
-                <footer class="footer white-fotL ser-f login-g">
-                    <div class="footer-content center-relative">
-                        <div class="copyright-holder">© 2021 LearningBALI</div>
-                    </div>
-                </footer>
-            </div>
-            <div id="contact" class="section">
-                <div class="abt-img">
-                    <img src="../assets/images/con-men.jpg" />
-                    <h3 class="entry-title">
-                        CONTACT
-                    </h3>
-                    <p>Need an expert? Our support team is here to help!</p>
-                </div>
-                <div class="section-wrapper block content-1170 center-relative">
-                    <form>
-                        <div class="con-form last-form">
-                            <div class="col-7">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input
-                                            class="form-control"
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            placeholder="First Name"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input
-                                            class="form-control"
-                                            id="name"
-                                            name="name"
-                                            type="text"
-                                            placeholder="Last Name"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="form-group ty">
-                                    <div class="input-group">
-                                        <input
-                                            class="form-control"
-                                            id="email"
-                                            name="email"
-                                            type="text"
-                                            placeholder="Phone Number	"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="form-group ty">
-                                    <div class="input-group">
-                                        <input
-                                            class="form-control"
-                                            id="phone"
-                                            name="phone"
-                                            type="text"
-                                            placeholder="Email address"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="colthird">
-                                <textarea
-                                    name="message"
-                                    cols="40"
-                                    rows="10"
-                                    class="wpcf7-form-control wpcf7-textarea"
-                                    aria-invalid="false"
-                                    placeholder="Message"
-                                ></textarea>
-                            </div>
-                            <input type="submit" value="Submit" />
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <Contact></Contact>
         </div>
         <!-- Footer -->
-        <footer class="footer">
+        <Copyright></Copyright>
+        <!-- <footer class="footer">
             <div class="footer-content center-relative">
                 <div class="copyright-holder">© 2021 LearningBALI</div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 </template>
 
 <script>
-// import '../assets/js/jquery.js';
-// import '../assets/js/jquery.sticky.js';
-// import '../assets/js/tipper.js';
-// import '../assets/js/jquery.fitvids.js';
-// import '../assets/js/jquery.smartmenus.min.js';
-// import '../assets/js/jquery.sticky-kit.min.js';
-// import '../assets/js/main.js';
-
 import Welcome from '../components/welcome.vue';
 import AboutUs from '../components/about-us.vue';
 import Goals from '../components/goals.vue';
+import Services from '../components/services.vue';
+import ServicesList from '../components/services-list.vue';
+import Carrer from '../components/carrer.vue';
+import Login from '../components/login.vue';
+import Contact from '../components/contact.vue';
+import Copyright from '../components/copyright.vue';
 
 export default {
     name: 'Home',
@@ -1055,6 +151,12 @@ export default {
         Welcome,
         AboutUs,
         Goals,
+        Services,
+        ServicesList,
+        Carrer,
+        Login,
+        Contact,
+        Copyright,
     },
     data: function() {
         return {
@@ -1069,10 +171,21 @@ export default {
             logo: require('../assets/images/LearningBALI.png'),
             screenSize: 0,
             copyrightHolder: '© 2021 LearningBALI',
+
+            isOn: false,
         };
     },
     mounted: function() {
         window.addEventListener('resize', this.getWindowWidth);
+
+        window.addEventListener('scroll', function() {
+            let header = document.querySelector('.header-holder');
+            header.classList.toggle('is-sticky', window.scrollY > 0);
+        });
+
+        // const el = document.querySelector(this.$route.hash);
+        // el && el.scrollIntoView();
+        // console.log('el ', el);
     },
     computed: {
         iconUrl() {
@@ -1085,18 +198,66 @@ export default {
             this.screenSize = window.innerWidth;
         },
 
-        // scrollMeTo(id) {
-        //     console.log('scrolMe to ', id);
-        //     const el = document.querySelector(id);
-        //     el &&
-        //         el.scrollIntoView({
-        //             behavior: 'smooth',
-        //             block: 'nearest',
-        //             inline: 'nearest',
-        //         });
-        // },
+        showToggleMenu: function() {
+            // console.log('Toggle menu ');
+            this.isOn = !this.isOn;
+        },
+
+        hideToggleMenu: function() {
+            // console.log('hideToggleMenu');
+            this.isOn = false;
+        },
     },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.is-sticky {
+    position: fixed;
+    top: 0;
+}
+.router-link-active {
+    color: #409176 !important;
+}
+.site-wrapper {
+    // img {
+    //     display: block;
+    //     margin: auto;
+    // }
+    .abt-img {
+        img {
+            display: block;
+        }
+    }
+
+    .welcome-to {
+        @media (min-width: 1280px) {
+            display: flex !important;
+            justify-content: center;
+            img {
+                display: block;
+            }
+        }
+    }
+
+    .new-skill {
+        @media (min-width: 1280px) {
+            display: flex !important;
+            justify-content: center;
+            img {
+                display: block;
+            }
+        }
+    }
+
+    #about h3.entry-title,
+    #goal h3.entry-title,
+    #serv h3.entry-title,
+    #carrer h3.entry-title {
+        transform: translate(0%, -55%);
+    }
+}
+</style>

@@ -46,7 +46,7 @@ body {
     left: 0;
     margin: auto;
     width: 190px;
-    z-index: -1;
+    /* z-index: -1; */
 }
 /* Banner */
 
@@ -770,12 +770,12 @@ span.ver {
 
 .last-form .col-7 {
     width: 30%;
-    float: left;
+    /* float: left; */
 }
 
 .last-form .colthird {
     width: 60%;
-    float: left;
+    /* float: left; */
 }
 
 #contact {
@@ -800,7 +800,7 @@ span.ver {
 
 .last-form .colthird {
     width: 60%;
-    float: left;
+    /* float: left; */
     margin-left: 40px;
 }
 
@@ -1308,13 +1308,13 @@ footer.footer.green-fotL {
     }
     .last-form .col-7 {
         width: 100%;
-        float: left;
+        /* float: left; */
         flex: 0 0 100%;
         max-width: 100%;
     }
     .last-form .colthird {
         width: 95%;
-        float: left;
+        /* float: left; */
         margin-left: 0;
         margin: 0 auto;
         display: block;

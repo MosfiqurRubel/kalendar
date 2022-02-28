@@ -12,16 +12,23 @@
             <i class="fa fa-angle-double-up" aria-hidden="true"></i>
         </div>
 
-        <footer class="footer white-fotL goal-f">
+        <Copyright :class="['white-fotL', 'goal-f']"></Copyright>
+
+        <!-- <footer class="footer white-fotL goal-f">
             <div class="footer-content center-relative">
                 <div class="copyright-holder">{{ copyrightHolder }}</div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 </template>
 
 <script>
+import Copyright from '../components/copyright.vue';
+
 export default {
+    components: {
+        Copyright,
+    },
     data: function() {
         return {
             goalsPhoto: require('../assets/images/g.jpg'),

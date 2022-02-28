@@ -8,8 +8,8 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        // name: 'Home',
-        // redirect: 'home',
+        name: 'Home',
+        // redirect: '',
         component: Home,
     },
     {
@@ -25,6 +25,7 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
+    // base: process
     scrollBehavior(to, from, savedPosition) {
         console.log('from ', from);
         console.log('to ', to, typeof to);
@@ -33,6 +34,12 @@ const router = new VueRouter({
             return {
                 selector: to.hash,
                 behavior: 'smooth',
+                offset: { x: 0, y: 81 },
+            };
+        } else {
+            return {
+                behavior: 'smooth',
+                offset: { x: 0, y: 0 },
             };
         }
     },

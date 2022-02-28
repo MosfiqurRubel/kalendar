@@ -10,16 +10,24 @@
             <p v-html="introText"></p>
         </div>
 
-        <footer class="footer white-fotL">
+        <Copyright :class="'white-fotL'"></Copyright>
+
+        <!-- <footer class="footer white-fotL">
             <div class="footer-content center-relative">
                 <div class="copyright-holder">{{ copyrightHolder }}</div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 </template>
 
 <script>
+import Copyright from '../components/copyright.vue';
+
 export default {
+    components: {
+        Copyright,
+    },
+
     data: function() {
         return {
             aboutUsPhoto: require('../assets/images/abtbg.png'),
@@ -38,4 +46,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+// .abt-img {
+//     img {
+//         display: block;
+//     }
+// }
+</style>
